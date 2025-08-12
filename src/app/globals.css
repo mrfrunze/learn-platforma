@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Tailwind CSS v4 is enabled via PostCSS. We keep a minimal CSS file
+   to define CSS variables for font fallbacks and set a base background
+   that matches the provided design (very light warm gray). */
+
+:root {
+  --background: #f6f5f3; /* page canvas color similar to screenshot */
+  --foreground: #111111; /* near-black text */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Base element styling mirrors Tailwind resets but ensures our
+   background and color are applied before utilities run. */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans, ui-sans-serif), system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+    "Segoe UI Emoji";
+}
