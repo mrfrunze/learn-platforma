@@ -31,4 +31,34 @@ export function detectPreferredLanguage(): SupportedLang {
   return "en";
 }
 
+// Minimal in-file i18n resources for navigation and common CTA text
+const resources: Record<SupportedLang, {
+  nav: { courses: string; blog: string; about: string; contacts: string };
+  cta: { start: string };
+}> = {
+  en: {
+    nav: { courses: "Courses", blog: "Blog", about: "About us", contacts: "Contacts" },
+    cta: { start: "Start Learning" },
+  },
+  ru: {
+    nav: { courses: "Курсы", blog: "Блог", about: "О нас", contacts: "Контакты" },
+    cta: { start: "Начать обучение" },
+  },
+  ua: {
+    nav: { courses: "Курси", blog: "Блог", about: "Про нас", contacts: "Контакти" },
+    cta: { start: "Почати навчання" },
+  },
+  sv: {
+    nav: { courses: "Kurser", blog: "Blogg", about: "Om oss", contacts: "Kontakt" },
+    cta: { start: "Börja lära" },
+  },
+};
+
+/**
+ * Fetch localized strings for a given language. Safe fallback to English.
+ */
+export function getTranslations(lang: SupportedLang) {
+  return resources[lang] ?? resources.en;
+}
+
 
